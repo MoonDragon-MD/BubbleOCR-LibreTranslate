@@ -18,9 +18,9 @@ https://www.gimp.org/
 Note:  Version Gimp 2.10.18 has a bug, when selecting the font from a script.
 
 ##### LibreTranslate (Argos)
-[LibreTranslate on Docker )](https://hub.docker.com/r/libretranslate/libretranslate)
+[LibreTranslate on Docker](https://hub.docker.com/r/libretranslate/libretranslate)
 Or there are other ways:
-[LibreTranslate Github )](https://github.com/LibreTranslate/LibreTranslate)
+[LibreTranslate Github](https://github.com/LibreTranslate/LibreTranslate)
 
 ##### Tesseract Open Source OCR Engine
 https://github.com/tesseract-ocr/tesseract
@@ -32,6 +32,10 @@ https://github.com/tesseract-ocr/tesseract
 **Plugin-only Version:**
 
 https://github.com/snakeotakon/BubbleOCR/releases
+
+Edit for offline translation with LibreTranslate
+
+[BubbleOCR-LibreTranslate](https://github.com/MoonDragon-MD/BubbleOCR-LibreTranslate/releases/tag/v2.3)
 
 Tesseract needs to be installed separately for it to work.
 Waifu2x is optional
