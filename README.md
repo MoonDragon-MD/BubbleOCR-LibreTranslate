@@ -1,4 +1,5 @@
 BubbleOCR 2.3
+
 It allows you to translate any text of an image, specially designed for text bubbles/balloon totally offline
 
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/UAO7KL0itEY/0.jpg)](https://youtu.be/UAO7KL0itEY)
