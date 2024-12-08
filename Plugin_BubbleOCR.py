@@ -15,6 +15,8 @@ import traceback
 import SimpleHTTPServer
 import SocketServer
 import HTMLParser
+import requests
+import json
 import cgi
 import xml.etree.ElementTree as ET
 import urllib
@@ -2639,32 +2641,49 @@ def replaceCharacters(listC,text):
             text=text.replace(lr[0],lr[1])
     return text
 def translationFile(fileOCR):
-    fileT=fileOCR.replace(".txt","-T.txt")
-    textTranslation="Not Found Translation"
+    fileT = fileOCR.replace(".txt", "-T.txt")
+    textTranslation = "Not Found Translation"
+
     if pC.bTranslation:
         try:
-            # shlex.split(g_translators[0][1], posix=False)
-            process=subprocess.Popen(
-            [g_translators[0][0],"--langsource" ,g_srcCodeLanguage ,"--langtarget" , g_targetCodeLanguage ,"--filesource" ,fileOCR], \
-            stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
-            output=process.communicate()
-            textTranslation = output[0].decode("UTF-8")
-            if( process.returncode!=0):
+            # Prepara il payload per la richiesta POST a LibreTranslate
+            url = "http://localhost:5000/translate"
+            headers = {"Content-Type": "application/json"}
+
+            data = {
+                "q": readFileUTF(fileOCR),  # Carica il testo da tradurre
+                "source": g_srcCodeLanguage,
+                "target": g_targetCodeLanguage
+            }
+
+            # Invia la richiesta di traduzione
+            response = requests.post(url, headers=headers, json=data)
+
+            if response.status_code == 200:
+                # Se la risposta è corretta, estrae il testo tradotto
+                textTranslation = response.json()['translatedText']
+            else:
+                # Gestisce gli errori di traduzione
                 pdb.gimp_message("----- ERROR  TRANSLATION-----")
-                pdb.gimp_message(str(output[1]))
+                pdb.gimp_message(str(response.text))
                 return "Error: Translation"
+
         except Exception as e:
-            pdb.gimp_message("Error Translation" + str(traceback.format_exc()) )
+            pdb.gimp_message("Error Translation" + str(e))
             return "Error: Translation"
     else:
-        textTranslation=readFileUTF(fileT)
-        
-    if pC.indexFix==3 or pC.indexFix==4:#Fix Translation of List or Fix OCR/Tranlation of List
-        textTranslation = replaceCharacters(g_listReplaceTarget,textTranslation)
-    
-    textTranslation = changeCaseText(textTranslation,pC.caseTranslation)
-    writeFileUTF(fileT,textTranslation)
-    if g_bMessageToConsole: pdb.gimp_message(textTranslation)
+        textTranslation = readFileUTF(fileT)
+
+    if pC.indexFix == 3 or pC.indexFix == 4:  # Fix Translation of List or Fix OCR/Translation of List
+        textTranslation = replaceCharacters(g_listReplaceTarget, textTranslation)
+
+    textTranslation = changeCaseText(textTranslation, pC.caseTranslation)
+    writeFileUTF(fileT, textTranslation)
+
+    if g_bMessageToConsole:
+        pdb.gimp_message(textTranslation)
+
+    return textTranslation
 def readHOCR(pathFile,positionLayer,boundsBalloonEmpty,pointsSelection):
     OCRText = ""
     size=0
