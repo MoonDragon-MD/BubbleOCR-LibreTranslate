@@ -1,12 +1,4 @@
-# Other GOOOD Translator
-
-https://github.com/dmMaze/BallonsTranslator
-
-
-
-
-
-#  (Abandoned) BubbleOCR 2.2
+BubbleOCR 2.3
 It allows you to translate any text of an image, specially designed for text bubbles/balloon
 
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/UAO7KL0itEY/0.jpg)](https://youtu.be/UAO7KL0itEY)
@@ -100,8 +92,6 @@ Start Gimp and there will be a new menu: "LAYER/TOOLS/", and a new file will be 
 
 - **BubbleOCR** (*Plugin_BubbleOCR.py*).- Main plugin for OCR and translation, needs Gimp and Tesseract to work properly. All other plugins are optional.
 ###### Optionally, you need:
- - Deep-translator.exe (fork).- For translation with google (line commands)
- https://pypi.org/project/deep-translator/
  - Waifu2x.- to improve character recognition (noise reduction).
  - Capture2Text_CLI.- Based on Tesseract, but it can give different results than the original Tesseract.
 
@@ -273,6 +263,9 @@ https://www.nikse.dk/subtitleedit/ 		(List words, spell check, translator)
 Microsoft Visual C++ Redistributable latest Visual Studio 2015, 2017, 2019, and 2022
 
 https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170
+
+###################################
+Edited for offline translation by MoonDragon-MD
 
 
 
