@@ -17,7 +17,10 @@ https://www.gimp.org/
 
 Note:  Version Gimp 2.10.18 has a bug, when selecting the font from a script.
 
-
+##### LibreTranslate (Argos)
+[LibreTranslate on Docker )](https://hub.docker.com/r/libretranslate/libretranslate)
+Or there are other ways:
+[LibreTranslate Github )](https://github.com/LibreTranslate/LibreTranslate)
 
 ##### Tesseract Open Source OCR Engine
 https://github.com/tesseract-ocr/tesseract
