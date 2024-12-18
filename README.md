@@ -1,4 +1,4 @@
-BubbleOCR 2.3
+### BubbleOCR 2.3
 
 It allows you to translate any text of an image, specially designed for text bubbles/balloon totally offline
 
